@@ -1,0 +1,81 @@
+##                 /usr/share/man/man3/Git.3pm.gz
+##                 /usr/share/man/man1/diff.1.gz
+## 
+##    Controlando salida formateada
+##        -P paginador, --pager=paginador
+##               Especifica  el  paginador  de  salida que se va a utilizar.  Por
+##               defecto, man utiliza pager, retrotrayéndose a cat si pager no se
+##               encuentra  o no es ejecutable.  Esta opción anula la variable de
+##               entorno $MANPAGER, la cual, a  su  vez,  anula  la  variable  de
+##               entorno $PAGER.  No se emplea a la vez que -f o -k.
+## 
+##               El  valor  puede  ser  un nombre de orden simple o una orden con
+##               argumentos y  puede  utilizar  entrecomillado  de  shell  (barra
+##               inclinada  hacia  atrás,  comillas sencillas o comillas dobles).
+##               No puede utilizar tuberías  para  conectar  varias  órdenes;  si
+##               hicera  falta, utilice un script que coja el fichero que hay que
+##               mostrar de un argumoento o de la entrada estándar.
+## 
+##        -r prompt, --prompt=prompt
+##               Si se emplea como paginador una versión reciente  de  less,  man
+##               tratará   de   establecer   su   indicador  y  algunas  opciones
+##               razonables.  El indicador predeterminado se parece a
+## 
+##                Página de manual nombre(sec) línea x
+## 
+##               donde nombre denota el nombre de la página de manual, sec denota
+##               la  sección  en  la  que se ha encontrado y x el número de línea
+##               actual.  Esto se consigue  utilizando  la  variable  de  entorno
+##               $LESS.
+## 
+##               Suministrar   -r   con   una  cadena  anula  esta  configuración
+##               predefinida.  La cadena puede contener el texto $MAN_PN que será
+##               expandido al nombre de la página actual de manual y su nombre de
+##               sección entre "(" y ")".  La cadena utilizada  para  generar  la
+##               configuración predefinida puede expresarse como
+## 
+##               \ Página\ del\ Manual\ \$MAN_PN\ ?ltline\ %lt?L/%L.:
+##               byte\ %bB?s/%s..?\ (FINAL):?pB\ %pB\\%..
+##               (pulse h para ayuda o q para salir)
+## 
+##               Está partido en tres líneas aquí solo para facilitar la lectura.
+##               Para su significado véase la página de manual  de  less(1).   La
+##               cadena  del  indicador  primero  la  evalúa la shell.  Todas las
+##               comillas dobles, comillas traseras  y  barras  inclinadas  hacia
+##               atrás en el indicador deben ser escapadas anteponiendo una barra
+##               inclinada hacia atrás.  La cadena del indicador  puede  terminar
+##               en  un  $  escapado  que  puede ir seguido por más opciones para
+##               less.  Por omisión, man establece las opciones -ix8.
+## 
+##               La variable de entorno $MANLESS descrita abajo puede  utilizarse
+##               para establecer una cadena del indicador predeterminada si no se
+##               suministra ninguna en la línea de órdenes.
+## 
+##        -7, --ascii
+##               Cuando se vea una página  de  manual  en  ascii(7)  puro  en  un
+##               terminal  de  7  bits  o  en  un  emulador  de terminal, algunos
+##               caracteres podrían no mostrarse correctamente cuando se  utiliza
+##               la  descripción  de  dispositivo  latin1(7) con GNU nroff.  Esta
+##               opción permite mostrar en ascii páginas puras en  ascii  con  el
+##               dispositivo  latin1.   No traduce ningún texto latin1.  La tabla
+##               siguiente muestra las traducciones realizadas:  algunas  de  sus
+##               partes  podrían no mostrarse apropiadamente cuando se utiliza un
+##               dispositivo latin1(7) de GNU nroff.
+## 
+##               Descripción     Octal   latin1   ascii
+##               ───────────────────────────────────────
+##               guión de         255      ‐        -
+##               continuación
+##               viñeta (punto    267      •        o
+##               medio)
+##               tilde            264      ´        '
+##               signo de         327      ×        x
+##               multiplicar
+## 
+##               Si  la  columna  latin1  se  muestra  correctamente, su terminal
+##               podría estar configurado para caracteres latin1 y esta opción no
+##               es  necesaria.   Si  las  columnas latin1 y ascii son idénticas,
+##               está leyendo  esta  página  utilizando  esta  opción  o  man  no
+##               formateó  esta  página  utilizando la descripción de dispositivo
+##               latin1.  Si la columna latin1 falta o está corrupta, podría  ser
+##               que necesitase ver las páginas de manual con esta opción.
