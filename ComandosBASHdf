@@ -1,0 +1,10 @@
+df
+## S.ficheros     bloques de 1K    Usados Disponibles Uso% Montado en
+## udev                  968852         0      968852   0% /dev
+## tmpfs                 203500      1092      202408   1% /run
+## /dev/sda1           41016304  11970640    26932448  31% /
+## tmpfs                1017480      2936     1014544   1% /dev/shm
+## tmpfs                   5120         4        5116   1% /run/lock
+## tmpfs                1017480         0     1017480   0% /sys/fs/cgroup
+## 2021-01            860413912 841935352    18478560  98% /media/sf_2021-01
+## tmpfs                 203496         8      203488   1% /run/user/1000
