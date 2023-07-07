@@ -1,0 +1,4 @@
+cp prueba prueba1
+ls -l prueba*
+## -rwxrwx--- 1 root vboxsf 0 may 26 09:29 prueba
+## -rwxrwx--- 1 root vboxsf 0 may 26  2021 prueba1
