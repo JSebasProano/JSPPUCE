@@ -1,3 +1,422 @@
+man man
+## MAN(1)                Utilidades del paginador del manual               MAN(1)
+## 
+## NOMBRE
+##        man - interfaz de los manuales de referencia del sistema
+## 
+## SINOPSIS
+##        man [opciones de man] [[sección] página ...] ...
+##        man -k [opciones de apropos] regexp ...
+##        man -K [opciones de man] [sección] term ...
+##        man -f [whatis opciones] página ...
+##        man -l [opciones de man] fichero ...
+##        man -w|-W [opciones de man] página ...
+## 
+## DESCRIPCIÓN
+##        man  es el paginador de manuales del sistema.  Cada argumento de página
+##        argumento dado a man normalmente es el nombre de un programa,  utilidad
+##        o  función.  La  página  del  manual  asociada  con  cada  uno de estos
+##        argumentos es, pues, encontrada y  mostrada.   Si  se  proporciona  una
+##        sección,  man  mirará  solo  en  esa  sección  del  manual.   La acción
+##        predeterminada es buscar en todas las secciones  disponibles  siguiendo
+##        un orden predefinido (véase DEFAULTS), y mostrar solo la primera página
+##        encontrada, incluso si la página existe en de varias secciones.
+## 
+##        La tabla de abajo muestra los números de sección  del  manual  seguidos
+##        por los tipos de página que contienen.
+## 
+##        1   Programas ejecutables u órdenes de la shell
+##        2   Llamadas al sistema (funciones proporcionados por el núcleo)
+##        3   Llamadas a biblioteca (funciones dentro de bibliotecas de programa)
+##        4   Ficheros especiales (normalmente se encuentran en /dev)
+##        5   Formatos de fichero y convenios, p.e.  /etc/passwd
+##        6   Juegos
+##        7   Miscelánea (incluidos paquetes de macros y convenios), p.e. man(7),
+##            groff(7)
+##        8   Órdenes de administración del sistema (normalmente solo para root)
+##        9   Rutinas del núcleo [No estándar]
+## 
+##        Una página de manual contiene varias secciones.
+## 
+##        Nombres de sección  convencionales:  NOMBRE,  SINOPSIS,  CONFIGURACIÓN,
+##        DESCRIPCIÓN,   OPCIONES,   ESTADO DE SALIDA,  VALOR DEVUELTO,  ERRORES,
+##        ENTORNO, FICHEROS, VERSIONES,  CONFORME A,  NOTAS,  DEFECTOS,  EJEMPLO,
+##        AUTORES, y VÉASE TAMBIÉN.
+## 
+##        Los  siguientes  convenios  se  aplican  a la sección SINOPSIS y pueden
+##        utilizarase como guía en otras secciones.
+## 
+##        escritura resaltada   teclea exactamente como se muestra.
+##        texto en cursiva      sustituye con argumento apropiado.
+##        [-abc]                cualquiera de los argumentos  dentro  de  [  ]  o
+##                              todos ellos son opcionales.
+##        -a|-b                 las opciones delimitadas por | no pueden usarse a
+##                              la vez.
+##        argumento ...         argumento es repetible.
+##        [expresión] ...       la expresión entera entre [] es repetible.
+## 
+##        La representación exacta puede variar con  el  dispositivo  de  salida.
+##        Por  ejemplo,  normalmente man no sabe representar letra cursiva cuando
+##        se ejecuta en un terminal, y típicamente utilizará  subrayado  o  texto
+##        coloreado en su lugar.
+## 
+##        La  orden  o  función de ilustración es un patrón que debería coincidir
+##        con todas las posibles invocaciones.  En algunos casos  es  aconsejable
+##        ilustrar  varias  invocaciones exclusivas como se muestra en la sección
+##        SINOPSIS de esta página de manual.
+## 
+## EJEMPLOS
+##        man ls
+##            Enseña la página de manual para el ítem (programa)  ls.
+## 
+##        man man.7
+##            Muestra la página de manual del paquete  de  macros  man  desde  la
+##            sección 7.  (Esta es una ortografía alternativa de "man 7 man".)
+## 
+##        man 'man(7)'
+##            Muestra  la  página  de  manual  del paquete de macros man desde la
+##            sección 7.  (Esta es otra ortografía alternativa de  "man  7  man".
+##            Puede  ser  ás cómodo cuando se copian y pegan referencias cruzadas
+##            en  las  páginas  del  manual.   Obsérvese   que   los   paréntesis
+##            normalmente deben entrecomillarse para protegerlos de la shell.)
+## 
+##        man -a introducir
+##            Muestra,  sucesivamente,  todas  las  páginas  de  introducción del
+##            manual disponibles contenidas en el manual.  Se puede salir durante
+##            la  visualización de las páginas sucesivas o saltarse cualquiera de
+##            ellas.
+## 
+##        man -t bash | lpr -Pps
+##            Da formato a la página de manual para  bash  siguiendo  el  formato
+##            predeterminado  de  troff  o  groff  y  la manda a la impresora con
+##            nombre ps.  La salida  predeterminada  para  groff  normalmente  es
+##            PostScript.   man  --help  debería  informar de qué procesador está
+##            ligado a la opción -t.
+## 
+##        man -l -Tdvi ./foo.1x.gz > ./foo.1x.dvi
+##            Esta orden descomprimirá y  formateará  la  página  ./foo.1x.gz  de
+##            manual  fuente  nroff,  con  destino  a un fichero independiente de
+##            dispositivo (dvi).  La redirección es necesaria porque la opción -T
+##            provoca  que la salida se dirija a stdout sin ningún paginador.  La
+##            salida puede visualizarse con un programa como xdvi o procesarse  a
+##            PostScript utilizando un programa como dvips.
+## 
+##        man -k printf
+##            Busca  en  las  descripciones  cortas y en los nombres de página de
+##            manual la palabra clave printf  como  expresión  regular.   Imprime
+##            cualquier coincidencia.  Equivalente a apropos printf.
+## 
+##        man -f smail
+##            Busca  las  páginas de manual referenciadas por smail e imprime las
+##            descripciones  cortas  de  las  que   encuentra.    Equivalente   a
+##            whatis smail.
+## 
+## VISIÓN GENERAL
+##        man  dispone  de  múltiples opciones para que el usuario disfrute de la
+##        máxima flexibilidad posible.  Se pueden hacer cambios  en  la  ruta  de
+##        búsqueda,  el  orden  de las secciones, el procesador de salida y otros
+##        mecanismos y operaciones que se detallan más abajo.
+## 
+##        Hay varias variables de entorno que, si están asignadas,  se  consultan
+##        para  determinar  el  comportamiento  de  man.  A la variable "atrápalo
+##        todo" $MANOPT se le puede asignar una cadena cualquier  en  formato  de
+##        línea  de  órdenes, con la excepción de que cualquier espacio utilizado
+##        como parte del argumento de una opción debe estar  escapado  (precedido
+##        de  diagonal  hacia  atrás).   man analiza $MANOPT antes de analizar su
+##        propia línea de órdenes. Las opciones que requieren argumento se anulan
+##        en  favor de las mismas opciones halladas en la línea de órdenes.  Para
+##        restablecer todas  las  opciones  establecidas  en  $MANOPT,  se  puede
+##        especificar  -D  como  primera  opción  en  la  línea de órdenes.  Esto
+##        permite a man "olvidar" las opciones especificadas en  $MANOPT,  aunque
+##        aun así deben ser válidas.
+## 
+##        Las  páginas  de  manual  normalmente  se  almacenan  con el formato de
+##        nroff(1)  en  un  directorio  tal  como  /usr/share/man.   En   algunas
+##        instalaciones  también  puede  haber  páginas  cat  preformateadas para
+##        obtener un mejor rendimiento.   Véase  manpath(5)   para  los  detalles
+##        acerca de dónde se almacenan estos ficheros.
+## 
+##        Este  paquete  admite  páginas  de manual en varios idiomas, lo cual se
+##        controla por medio  de  su  localización.   Si  esto  no  lo  configura
+##        automáticamente  su  sistema,  posiblemente  tenga que establecer usted
+##        $LC_MESSAGES, $LANG u otras  variables  de  entorno  que  dependen  del
+##        sistema,   para   indicar   su   localización  preferida,  generalmente
+##        especificada en formato POSIX:
+## 
+##        <idioma>[_<territorio>[.<conjunto de caracteres>[,<versión>]]]
+## 
+##        Si la página deseada está disponible en su  localización,  se  mostrará
+##        esta en lugar de la página estándar (normalmenete inglés americano).
+## 
+##        Si  observa  que  las  traducciones  proporcionadas con este paquete no
+##        están disponibles en su idioma  nativo  y  estaría  usted  dispuesto  a
+##        suministrarlas,  puede  ponerse  en contacto con la persona responsable
+##        del mantenimiento para coordinar dicha actividad.
+## 
+##        Las páginas de manual individuales normalmente las escriben y mantienen
+##        los  encargados  del  mantenimiento  del  programa,  función o tema que
+##        documentan, y no forman parte de  este  paquete.   Si  nota  que  falta
+##        alguna página de manual o que no es adecuada, informe, por favor, a los
+##        encargados del paquete en cuestión.
+## 
+##        Para información relacionada con otras  características  y  extensiones
+##        disponibles   con   este  paginador  del  manual,  lea  los  documentos
+##        suministrado con el paquete.
+## 
+## PREDETERMINACIONES
+##        El orden en que se busca en las secciones puede alterarse  mediante  la
+##        variable    de   entorno   $MANSECT   o   la   directiva   SECTION   en
+##        /etc/manpath.config.  Está predefinida así:
+## 
+##               1 n l 8 3 2 3posix 3pm 3perl 3am 5 4 9 6 7
+## 
+##        La página de manual formateada se visualiza utilizando un paginador, el
+##        cual puede especificarse de diversas maneras o, en último caso, se hará
+##        de un modo predefinido (véase la opción -P para más detalles).
+## 
+##        Los filtros se descifran  de  diversos  modos.   En  primer  lugar,  se
+##        consulta  la  opción  de  línea  de órdenes -p o la variable de entorno
+##        $MANROFFSEQ.  Si no se ha utilizado -p ni se ha establecido la variable
+##        de  entorno,  se analiza la primera línea del fichero nroff en busca de
+##        una cadena de preprocesador.  Para contener una cadena de preprocesador
+##        válida, la primera línea debe parecerse a
+## 
+##        '\" <cadena>
+## 
+##        donde  cadena puede ser cualquier combinación de letras descrita por la
+##        opción -p más abajo.
+## 
+##        Si ninguno de los métodos  anteriores  proporiciona  información  sobre
+##        filtros, se utiliza una configuración predefinida.
+## 
+##        Una  cadena de formateo es constituida por los filtros y el formateador
+##        primario (nroof o [tg]roff con  -t) y ejecutada.  Alternativamente,  si
+##        un  programa ejecutable mandb_nfmt (o mandb_nfmt con -t)  existe dentro
+##        de la raíz del árbol man, se ejecuta este en cambio.   Se  le  pasa  al
+##        fichero  fuente  del manual, la cadena de preprocesador y opcionalmente
+##        el dispositivo especificado con -T or -E como argumentos.
+## 
+## OPCIONES
+##        Las opciones sin argumento que estén duplicadas en la línea de órdenes,
+##        en  $MANOPT  o  en  ambas  son  inocuas.   Para  opciones que requieran
+##        argumento cada duplicado anulará el valor del argumento anterior.
+## 
+##    Opciones generales
+##        -C fichero, --config-file=fichero
+##               Utilice este fichero de configuracion de usuario  en  lugar  del
+##               predeterminado según ~/.manpath.
+## 
+##        -d, --debug
+##               Escribe información de depuración.
+## 
+##        -D, --default
+##               Esta  opción,  generalmente  la  primera de todas, restablece el
+##               comportamiento predefinido de man.  Se utiliza para  restablecer
+##               aquellas opciones que pueden haber sido establecidas en $MANOPT.
+##               Cualquier opción que siga a -D producirá su efecto habitual.
+## 
+##        --warnings[=avisos]
+##               Activa advertencias desde groff.   Esto  puede  utilizarse  para
+##               realizar  comprobaciones  de corrección sobre el texto fuente de
+##               las páginas de manual.  warnings es  una  lista  de  nombres  de
+##               advertencias  separadas  por  comas;  si  no  se proporciona, lo
+##               predeterminado es «mac».  Véase el nodo “Advertencias”  en  info
+##               groff para una lista de nombres de advertencias disponibles.
+## 
+##    Modos principales de operación
+##        -f, --whatis
+##               Equivalente  a  whatis.   Muestra una descripción breve desde la
+##               página de manual, si está disponible.  Véase whatis(1)  para más
+##               detalles.
+## 
+##        -k, --apropos
+##               Equivalente  a  apropos.   Examina  las  descripciones cortas de
+##               páginas  de  manual  en  busca  de  palabras  clave,  y  muestra
+##               cualquier coincidencia.  Véase apropos(1)  para más detalles.
+## 
+##        -K, --global-apropos
+##               Buscar  texto  en  todas  las  páginas  de  manual.  Esta es una
+##               búsqueda de fuerza bruta, y es probable que tarde  un  poco;  si
+##               puede, debería especificar una sección para reducir el número de
+##               páginas en que buscar.  Los términos buscados pueden ser cadenas
+##               simples  (lo  predeterminado)  o  expresiones  regulares  si  se
+##               utiliza la opción --regex.
+## 
+##               Adviértase que esta búsqueda se realiza en los  fuentes  de  las
+##               páginas  de manual, no el texto presentado, y por lo tanto puede
+##               incluir falsos positivos debido a cosas como comentarios en  los
+##               ficheros  fuente.   Sería  mucho  más  lento  buscar en el texto
+##               procesado y presentado.
+## 
+##        -l, --local-file
+##               Activa el modo "local".  Formatea  y  muestra  los  ficheros  de
+##               manual  locales  en vez de buscando por la colección de manuales
+##               del sistema.  Cada argumento de página de manual se interpretará
+##               como  un  fichero  fuente  nroff  en el formato correcto.  No se
+##               generará ningún fichero cat.  Si '-' está listado  como  uno  de
+##               los argumentos, la entrada se tomará de stdin.  Cuando no se usa
+##               esta opción y man no encuentra la  página  requerida,  antes  de
+##               mostrar  el  mensaje  de error, intenta comportarse como si esta
+##               opción hubiera sido  suministrada,  utilizando  el  nombre  como
+##               nombre de fichero y buscando coincidencia exacta.
+## 
+##        -w, --where, --path, --location
+##               No  muestra  realmente  la página de manual, sino que imprime la
+##               ubicación del fichero  fuente  nroff  que  se  formatearía.   Si
+##               también   se   utiliza   la  opción  -a,  entonces  imprime  las
+##               ubicaciones de todos los ficheros fuente que coinciden  con  los
+##               criterios de búsqueda.
+## 
+##        -W, --where-cat, --location-cat
+##               No  muestra  realmente  la página de manual, sino que imprime la
+##               ubicación del fichero cat preformateado que  se  mostraría.   Si
+##               también   se   utiliza   la  opción  -a,  entonces  imprime  las
+##               ubicaciones  de  todos  los  ficheros  cat  preformateados   que
+##               coinciden con los criterios de búsqueda.
+## 
+##               Si  se  utilizan  tanto  -w  como  -W, entonces imprime tanto el
+##               fichero fuente como el fichero cat separados por un espacio.  Si
+##               se  utilizan  todas las opciones -w, -W y -a, entonces hace esto
+##               para cada posible coincidencia.
+## 
+##        -c, --catman
+##               Esta opción no  es  para  utilización  general  y  solo  debería
+##               utilizarla el programa catman.
+## 
+##        -R codificación, --recode=codificación
+##               En  vez de formatear la página de manual del modo habitual, saca
+##               su fuente convertida a la codificación especificada.  Si ya sabe
+##               la  codificación  del  fichero  fuente,  también  puede utilizar
+##               manconv(1)  directamente.   Sin  embargo,  esta  opción  permite
+##               convertir  varias páginas de manual a una codificación única sin
+##               necesidad de explícitar la codificación de cada una, siempre que
+##               estuvieran   ya  instaladas  en  una  estructura  similar  a  la
+##               jerarquía de página del manual.
+## 
+##               Valore la alternativa de utilizar man-recode(1)  para  convertir
+##               varias  páginas  de  manual, ya que dispone de una interfaz para
+##               conversión en masa que puede ser mucho más rápida.
+## 
+##    Encontrando páginas de manual
+##        -L local, --locale=local
+##               man normalmente determinará su localización actual mediante  una
+##               llamada  a  la  función  C  setlocale(3), la cual examina varias
+##               variables de entorno,  posiblemente  incluyendo  $LC_MESSAGES  y
+##               $LANG.   Para anular temporalmente el valor determinado, utilice
+##               esta opción para suministrar una  cadena  local  directamente  a
+##               man.   Nótese  que  no  tendrá  efecto  hasta que la búsqueda de
+##               páginas realmente comience.  Mensajes de salida como el de ayuda
+##               siempre    se   mostrarán   en   la   localización   determinada
+##               inicialmente.
+## 
+##        -m sistema[,...], --systems=sistema[,...]
+##               Si este sistema tiene acceso a las páginas  de  manual  de  otro
+##               sistema  operativo,  pueden  consultarse utilizando esta opción.
+##               Para buscar una página del manual desde la colección  de  págnas
+##               del manual del SOnuevo, utilice la opción -m SOnuevo.
+## 
+##               El  sistema especificado puede ser una combinación de nombres de
+##               sistemas operativos delimitados por  comas.   Para  incluir  una
+##               búsqueda  de las páginas de manual del sistema operativo nativo,
+##               incluya el nombre del sistema man en la  cadena  de  argumentos.
+##               Esta opción anulará la variable de entorno $SYSTEM.
+## 
+##        -M ruta, --manpath=ruta
+##               Especifica  una  ruta  de  man  alternativa.   Por  defecto, man
+##               utiliza código derivado de %manpath para determinar  la  ruta  a
+##               buscar.   Esta  opción  anula  la variable de entorno $MANPATH y
+##               provoca que se descarte la opción -m.
+## 
+##               Una ruta especificada como un manpath debe ser la  raíz  de  una
+##               jerarguía  de  página  man  estructurada  en  secciones  como se
+##               describe en el manual de man-db (en «El sistema  de  páginas  de
+##               manual»).    Para   ver   páginas  del  manual  fuera  de  tales
+##               jerarquías, véase la opción -l.
+## 
+##        -S listado, -s listado, --sections=listado
+##               La lista dada es una lista de secciones separadas por dos puntos
+##               o  por  comas,  que se utiliza para determinar qué secciones del
+##               manual buscar y en qué orden.  Esta opción anula la variable  de
+##               entorno  $MANSECT.   (La  ortografía -s está para compatibilidad
+##               con System V.)
+## 
+##        -e sub-extensión, --extension=sub-extensión
+##               Algunos sistemas  incorporan  paquetes  grandes  de  páginas  de
+##               manual, como aquellas que acompañan al paquete Tcl, dentro de la
+##               jerarquía de páginas del manual principal.  Para  solucionar  el
+##               problema  de  tener  dos páginas del manual con el mismo nombre,
+##               como exit(3), las páginas de Tcl habitualmente se asignaban a la
+##               sección  I.  Como esa era una idea poco afortunada, ahora pueden
+##               ponerse las páginas en la  sección  correcta  y  asignarles  una
+##               «extensión»  propia, en este caso, exit(3tcl).  Normalmente, man
+##               mostrará exit(3)  preferentemente, no exit(3tcl).  Para negociar
+##               esta situación y evitar tener que saber en qué sección reside la
+##               página requerida, ahora  se  le  puede  dar  a  man  una  cadena
+##               sub-extensión  que  indique  a  qué  paquete  debe pertenecer la
+##               página.  Utilizando el ejemplo anterior, suministrar  la  opción
+##               -e tcl  a  man  restringirá la búsqueda a páginas que tengan una
+##               extensión *tcl.
+## 
+##        -i, --ignore-case
+##               No distingue mayúsculas y minúsculas cuando  busque  páginas  de
+##               manual.  Esto es lo predeterminado.
+## 
+##        -I, --match-case
+##               Busca páginas de manual distinguiendo mayúsculas y minúsculas.
+## 
+##        --regex
+##               Muestra todas las páginas en las que alguna parte de los nombres
+##               o las descripciones coincida con cada argumento de  página  como
+##               expresión  regular.  tal  como  apropos(1).  Como no suele haber
+##               ninguna forma razonable de tomar la  «mejor»  página  cuando  se
+##               busca una expresión regular, esta opción implica -a.
+## 
+##        --wildcard
+##               Muestra todas las páginas en las que alguna parte de los nombres
+##               o las descripciones coincida con cada argumento  de  página  con
+##               comodines como los de la shell. tal como apropos(1)  --wildcard.
+##               El argumento de  página  debe  coincidir  con  el  nombre  o  la
+##               descripción  en  su  totalidad  o  coincidir  con los límites de
+##               palabra en la descripción.  Como no suele  haber  ninguna  forma
+##               razonable de tomar la «mejor» página cuando se busca un comodín,
+##               esta opción implica -a.
+## 
+##        --names-only
+##               Si se utiliza la  opción  --regex  o  --wildcard,  solo  intenta
+##               conicidencias   con   los   nombres   de   página,  no  con  las
+##               descripciones de página, tal con whatis(1).  En caso  contrario,
+##               no tiene efecto.
+## 
+##        -a, --all
+##               El comportamiento predeterminado es que man termine tras mostrar
+##               la página de manual más adecuada  que  encuentra.   Esta  opción
+##               provoca que man muestre todas las páginas del manual con nombres
+##               que coincidan con los criterios de búsqueda.
+## 
+##        -u, --update
+##               Esta opción provoca que man actualice  sus  cachés  de  base  de
+##               datos  de  las  páginas  de  manual  instaladas.   Rara  vez  es
+##               necesario hacer  eso,  por  lo  que  normalmente  es  preferible
+##               ejecutar mandb(8).
+## 
+##        --no-subpages
+##               Por  omisión,  man  intenta  interpretar los pares de nombres de
+##               páginas de manual dados en la línea de órdenes como equivalentes
+##               a  una  página  de  manual  simple  que  contenga  un guión o un
+##               subrayado.  Se admiten los patrones habituales de programas  que
+##               implementan   varias   subórdenes,  permitiéndoles  proporcionar
+##               páginas de manual para cada  una  a  la  que  se  pueda  acceder
+##               utilizando  una  sintaxis  similar  a  la que se utilizaría para
+##               invocar a las propias subórdenes.  Por ejemplo:
+## 
+##                 $ man -aw git diff
+##                 /usr/share/man/man1/git-diff.1.gz
+## 
+##               Para  desactivar  este   comportamiento,   utilice   la   opción
+##               --no-subpages.
+## 
+##                 $ man -aw --no-subpages git diff
+##                 /usr/share/man/man1/git.1.gz
 ##                 /usr/share/man/man3/Git.3pm.gz
 ##                 /usr/share/man/man1/diff.1.gz
 ## 
