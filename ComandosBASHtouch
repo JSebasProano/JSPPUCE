@@ -1,0 +1,3 @@
+touch prueba
+ls -l prueba
+## -rwxrwx--- 1 root vboxsf 0 may 26 09:29 prueb
