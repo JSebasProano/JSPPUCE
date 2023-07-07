@@ -1,0 +1,4 @@
+free -h
+##               total       usado       libre  compartido búfer/caché  disponible
+## Memoria:       1,9Gi       951Mi        84Mi        23Mi       950Mi       855Mi
+## Swap:            0B          0B          0B
