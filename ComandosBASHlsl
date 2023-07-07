@@ -1,0 +1,9 @@
+ls -l
+## total 236
+## -rwxrwx--- 1 root vboxsf    263 abr  9 13:19 header.html
+## -rwxrwx--- 1 root vboxsf  12841 abr  5 12:16 logo.png
+## drwxrwx--- 1 root vboxsf   4096 abr 27 19:15 Presentacion_BASH_1_files
+## -rwxrwx--- 1 root vboxsf 191293 abr 27 19:15 Presentacion_BASH_1.html
+## -rwxrwx--- 1 root vboxsf  13078 abr 27 19:14 Presentacion_BASH_1.Rmd
+## -rwxrwx--- 1 root vboxsf    480 abr  5 13:48 styles.css
+## drwxrwx--- 1 root vboxsf   4096 may  1 14:42 videos
