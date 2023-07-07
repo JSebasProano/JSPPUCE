@@ -1,0 +1,4 @@
+top -h
+##   procps-ng UNKNOWN
+## Uso:
+##   top -hv | -bcEHiOSs1 -d segs -n máx -u|U usuario -p pid(s) -o campo -w [cols]
