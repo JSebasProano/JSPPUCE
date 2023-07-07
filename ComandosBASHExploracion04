@@ -1,0 +1,2 @@
+grep ">" /usr/local/bioinf/sampledata/t-coffee/sproteases_large.fasta|grep -i "human"|grep "ELA1_HUMAN"
+## >sp|Q9UNI1|ELA1_HUMAN Elastase-1 precursor (EC 3.4.21.36) - Homo sapiens (Human).
