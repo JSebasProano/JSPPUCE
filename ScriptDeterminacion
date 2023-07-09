@@ -1,0 +1,9 @@
+# Determinamos la línea final de conversión
+final=`cat $archivo |grep ">" -n|awk -F":" '{ print $1 }'|grep -w $inicio -A1|tail -n1`
+final=$(($final -1))
+
+if [[ $final -le $inicio ]]; then
+    final=$total
+fi
+
+echo -e "inicio: $inicio final: $final\n"
