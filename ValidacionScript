@@ -1,0 +1,10 @@
+# Validamos si el número ingresado consta en el listado
+# valido=`cat $archivo |grep ">" -n|awk -F":" '{ print $1 }'|grep -w $inicio`
+
+if [[ $valido = "" ]]; then
+    echo "El valor ingresado no consta en el listado mostrado"
+    echo "Adios"
+    exit 0
+fi
+## El valor ingresado no consta en el listado mostrado
+## Adios
