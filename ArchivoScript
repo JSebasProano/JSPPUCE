@@ -1,0 +1,28 @@
+# Para que el usuario pueda elegir la cadena de ADN a transcribir se le mostrará un
+# menú que contenga todas las líneas descriptivas de las cadenas de ARN.
+
+# Para ello se imprimirán las líneas que inicien por ">"
+
+archivo="/usr/local/bioinf/sampledata//t-coffee/sproteases_small_dna.fasta"
+total=`wc -l $archivo|cut -d " " -f 1`
+
+cat $archivo |grep ">" -n
+## 1:>sp|P29786|TRY3_AEDAE
+## 18:>sp|P35037|TRY3_ANOGA
+## 36:>sp|P03953|CFAD_MOUSE
+## 53:>sp|P20160|CAP7_HUMAN
+## 70:>sp|P80015|CAP7_PIG
+## 85:>sp|P08246|ELNE_HUMAN
+## 103:>sp|Q00871|CTRB1_PENVA
+## 121:>sp|P07338|CTRB1_RAT
+## 138:>sp|P00773|ELA1_RAT
+## 155:>sp|Q06606|GRZ2_RAT
+## 171:>sp|P08884|GRAE_MOUSE
+## 187:>sp|P21844|MCPT5_MOUSE
+## 203:>sp|O35205|GRAK_MOUSE
+## 220:>sp|Q7YRZ7|GRAA_BOVIN
+## 237:>sp|Q9Y5K2|KLK4_HUMAN
+## 254:>sp|Q91VE3|KLK7_MOUSE
+## 270:>sp|Q6H321|KLK2_HORSE
+## 287:>sp|P00757|KLKB4_MOUSE
+## 304:>sp|Q03238|GRAM_RAT
