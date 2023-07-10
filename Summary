@@ -1,0 +1,15 @@
+summary(x)
+##    Tocantins        Melgaco          Ourem          Irituia     
+##  Min.   :232.0   Min.   :218.0   Min.   :232.0   Min.   :232.0  
+##  1st Qu.:255.0   1st Qu.:255.0   1st Qu.:255.0   1st Qu.:255.0  
+##  Median :255.0   Median :278.0   Median :255.0   Median :255.0  
+##  Mean   :251.2   Mean   :265.8   Mean   :251.2   Mean   :251.2  
+##  3rd Qu.:255.0   3rd Qu.:278.0   3rd Qu.:255.0   3rd Qu.:255.0  
+##  Max.   :255.0   Max.   :289.0   Max.   :255.0   Max.   :255.0  
+##      Guama      
+##  Min.   :218.0  
+##  1st Qu.:218.0  
+##  Median :232.0  
+##  Mean   :229.3  
+##  3rd Qu.:232.0  
+##  Max.   :255.0
