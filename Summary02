@@ -1,0 +1,8 @@
+summary(y)
+##        A               B              C               D        
+##  Min.   :78.00   Min.   :76.0   Min.   :73.00   Min.   :69.00  
+##  1st Qu.:80.25   1st Qu.:78.0   1st Qu.:77.25   1st Qu.:74.25  
+##  Median :82.50   Median :79.5   Median :78.50   Median :75.00  
+##  Mean   :83.60   Mean   :79.4   Mean   :78.60   Mean   :75.40  
+##  3rd Qu.:87.75   3rd Qu.:81.0   3rd Qu.:79.75   3rd Qu.:76.75  
+##  Max.   :89.00   Max.   :83.0   Max.   :84.00   Max.   :83.00
