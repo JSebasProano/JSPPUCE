@@ -1,0 +1,17 @@
+def protcharge(aa_seq):
+  """Returns the net charge of a protein sequence"""
+  protseq = aa_seq.upper()
+  charge = -0.002
+  aa_charge = {'C':-.045, 'D':-.999, 'E':-.998, 'H':.091, 'K':1, 'R':1, 'Y':-.001}
+  for aa in protseq:
+    charge += aa_charge.get(aa,0)
+  return charge
+
+with open('/usr/share/doc/t-coffee/examples/sample_seq5.fasta') as sample_seq:
+  seq_read = sample_seq.read()
+pep_1=seq_read.split('>')[1].replace('pep1','').replace('\n','').upper()
+pep_2=seq_read.split('>')[2].replace('pep2','').replace('\n','').upper()
+
+print(protcharge(pep_1),'\n',protcharge(pep_2))
+## 9.514000000000001 
+##  9.193
