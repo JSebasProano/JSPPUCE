@@ -1,0 +1,8 @@
+arn_sec_desc = 'MN908947.3 Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome'
+arn_sec_desc_list=arn_sec_desc.split()
+print("arn_sec_desc_list: ",arn_sec_desc_list)
+## arn_sec_desc_list:  ['MN908947.3', 'Severe', 'acute', 'respiratory', 'syndrome', 'coronavirus', '2', 'isolate', 'Wuhan-Hu-1,', 'complete', 'genome']
+print("arn_sec_desc_list[0]: ",arn_sec_desc_list[0])
+## arn_sec_desc_list[0]:  MN908947.3
+print("arn_sec_desc_list[1]: ",arn_sec_desc_list[1])
+## arn_sec_desc_list[1]:  Severe
