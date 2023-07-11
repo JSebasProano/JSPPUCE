@@ -1,0 +1,11 @@
+y<-read.csv("http://www.seracademia.com/academia/massa.csv")
+names(y)
+## [1] "A" "B" "C" "D"
+head(y)
+##    A  B  C  D
+## 1 78 78 79 77
+## 2 88 78 73 69
+## 3 87 83 79 75
+## 4 88 81 75 70
+## 5 83 78 77 74
+## 6 82 81 78 83
