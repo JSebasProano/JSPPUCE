@@ -1,0 +1,6 @@
+signal_peptide = 'MASKATLLLAFTLLFATCIA'
+signal_peptide_lower=signal_peptide.lower()
+print("singal_petide:",signal_peptide)
+## singal_petide: MASKATLLLAFTLLFATCIA
+print("singanl_peptide_lower:",signal_peptide_lower)
+## singanl_peptide_lower: maskatlllaftllfatcia
