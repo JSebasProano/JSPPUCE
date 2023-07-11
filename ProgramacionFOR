@@ -1,0 +1,10 @@
+longitud<-length(iris$Species)
+setosa<-0; versicolor<-0; virginica<-0
+
+for ( i in 1:longitud){
+ if (iris$Species[i]=="setosa") setosa=setosa+1
+ if (iris$Species[i]=="versicolor") versicolor=versicolor+1
+ if (iris$Species[i]=="virginica") virginica=virginica+1
+}
+sprintf("setosa; %s, versicolor; %f, virginica; %i",setosa,versicolor,virginica)
+## [1] "setosa; 50, versicolor; 50.000000, virginica; 50"
